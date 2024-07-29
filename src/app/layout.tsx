@@ -59,8 +59,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               speed={200}
             />
             <Toaster />
-            <Header />
-            <main className="flex flex-col items-center justify-center my-7">
+            {/* <Header /> */}
+            <main className="container flex flex-col items-center justify-center my-7">
               {children}
             </main>
             <PreFooter />

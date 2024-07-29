@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { HiArrowNarrowLeft } from "react-icons/hi";
-import { PostsListType } from "src/types/posts";
+
 import sanitizeHtml from "sanitize-html";
 
 const PostCard = ({ post }: { post: PostsListType }) => {
