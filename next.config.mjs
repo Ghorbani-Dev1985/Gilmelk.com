@@ -8,7 +8,7 @@ const nextConfig = {
         remotePatterns: [
             {
               protocol: "https",
-              hostname: "learn.limitx.ir",
+              hostname: "gilmelk.com",
             },
           ],
     },

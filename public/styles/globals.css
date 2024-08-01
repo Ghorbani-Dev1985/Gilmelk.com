@@ -17,7 +17,7 @@
   @apply leading-8
   }
   body {
-    @apply text-secondary bg-white h-full font-shabnam text-lg overflow-x-hidden scroll-smooth;
+    @apply text-primary-800 bg-white h-full font-shabnam text-lg overflow-x-hidden scroll-smooth;
   }
 }
 

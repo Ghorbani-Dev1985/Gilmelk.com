@@ -3,17 +3,25 @@ export interface EstatesListType {
     id: number,
     name: string,
     slug: string,
-    description: string,
+    date_created: string,
+    sku: string,
+    price: string,
     categories: {
         id: number,
         name: string,
-        slug: string
+        slug: string,
     }[],
-    price: string,
-    images : {
+    images: {
         id: number,
+        date_created: string,
         src: string,
+        alt: string
+    }[],
+    attributes: {
+        id: number,
         name: string,
-        alt: string,
-    }[]
+        slug: string,
+        options: [],
+    }[],
+    related_ids: [],
 }
