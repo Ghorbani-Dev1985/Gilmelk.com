@@ -6,6 +6,7 @@ export interface EstatesListType {
     date_created: string,
     sku: string,
     price: string,
+    stock_quantity: null | number,
     categories: {
         id: number,
         name: string,
