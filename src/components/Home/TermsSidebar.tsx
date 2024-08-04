@@ -5,7 +5,7 @@ import {
   Spinner,
 } from "@nextui-org/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import React, { useCallback } from "react";
+import React, { Dispatch, SetStateAction, useCallback, useState } from "react";
 import {
   useGetDocumentTerms,
   useGetElevatorTerms,
@@ -36,28 +36,22 @@ const TermsSidebar = () => {
   const { data: elevators } = useGetElevatorTerms();
   const { data: parkings } = useGetParkingTerms();
   const { data: others } = useGetOtherFeaturesTerms();
-  const CreateQueryString = useCallback((name: string, value: string) => {
-    const params = new URLSearchParams(searchParams.toString())
-      params.set(name, value)
- 
+  const [selectedKey , setSelectedKey] = useState(searchParams.get("attribute")?.split("=") || []);
+  const CreateQueryString = useCallback((name: string , value: string) => {
+    const params = new URLSearchParams(searchParams.toString())  
+        params.set(name , value)
       return params.toString()
     },
     [searchParams]
   )
   const ChangeQueryStringHandler = (e : React.ChangeEvent<HTMLSelectElement>) => {
     const name = e.target.name;
-    const value = e.target.value;
-   console.log(searchParams.size)
-   if(searchParams.size >= 1){
-    router.refresh()
-   }else{
+    const termId = e.target.value;
      router.push(
        pathname +
          "?" +
-         CreateQueryString(`${name}`, value)
+         CreateQueryString('attribute', `${name}&attribute_term=${termId}`)
      );
-   }
-   
   }
   if (isPending) return <Spinner size="md" color="primary" />;
   return (
@@ -67,6 +61,8 @@ const TermsSidebar = () => {
           items={neighborhoods}
           label="موقعیت مکانی"
           name="pa_neighborhood"
+          selectedKeys={selectedKey}
+          onSelectionChange={setSelectedKey}
           classNames={{ base: "mb-1.5" }}
           onChange={ChangeQueryStringHandler}
         >
@@ -80,6 +76,8 @@ const TermsSidebar = () => {
           items={documents}
           label="نوع سند ملک"
           name="pa_document"
+          selectedKeys={selectedKey}
+          onSelectionChange={setSelectedKey}
           onChange={ChangeQueryStringHandler}
           classNames={{ base: "mb-1.5" }}
         >
@@ -89,7 +87,10 @@ const TermsSidebar = () => {
         </Select>
       )}
       {years && (
-        <Select items={years} label="سال ساخت" classNames={{ base: "mb-1.5" }}>
+        <Select items={years} label="سال ساخت" name="pa_year-of-construction"
+        selectedKeys={selectedKey}
+        onSelectionChange={setSelectedKey}
+        onChange={ChangeQueryStringHandler} classNames={{ base: "mb-1.5" }}>
           {(year: TermsListType) => (
             <SelectItem key={year.id}>{year.name}</SelectItem>
           )}
@@ -99,6 +100,10 @@ const TermsSidebar = () => {
         <Select
           items={numFloors}
           label="تعداد طبقات ساختمان"
+          name="pa_total-number-of-floors"
+          selectedKeys={selectedKey}
+          onSelectionChange={setSelectedKey}
+        onChange={ChangeQueryStringHandler}
           classNames={{ base: "mb-1.5" }}
         >
           {(numFloor: TermsListType) => (
@@ -110,6 +115,10 @@ const TermsSidebar = () => {
         <Select
           items={numUnits}
           label="تعداد کل واحد‌ها"
+          name="pa_total-number-of-units"
+          selectedKeys={selectedKey}
+          onSelectionChange={setSelectedKey}
+          onChange={ChangeQueryStringHandler}
           classNames={{ base: "mb-1.5" }}
         >
           {(numUnit: TermsListType) => (
@@ -121,6 +130,10 @@ const TermsSidebar = () => {
         <Select
           items={floors}
           label="طبقه مورد نظر"
+          name="pa_floor-of-the-desired"
+          selectedKeys={selectedKey}
+          onSelectionChange={setSelectedKey}
+          onChange={ChangeQueryStringHandler}
           classNames={{ base: "mb-1.5" }}
         >
           {(floor: TermsListType) => (
@@ -132,6 +145,10 @@ const TermsSidebar = () => {
         <Select
           items={totalAreas}
           label=" متراژ کل "
+          name="pa_the-total-area"
+          selectedKeys={selectedKey}
+          onSelectionChange={setSelectedKey}
+          onChange={ChangeQueryStringHandler}
           classNames={{ base: "mb-1.5" }}
         >
           {(totalArea: TermsListType) => (
@@ -143,6 +160,10 @@ const TermsSidebar = () => {
         <Select
           items={rooms}
           label="  تعداد اتاق "
+          name="pa_number-of-rooms" 
+          selectedKeys={selectedKey}
+          onSelectionChange={setSelectedKey}
+          onChange={ChangeQueryStringHandler}
           classNames={{ base: "mb-1.5" }}
         >
           {(room: TermsListType) => (
@@ -154,6 +175,10 @@ const TermsSidebar = () => {
         <Select
           items={elevators}
           label=" وضعیت آسانسور "
+          name="pa_elevator"
+          selectedKeys={selectedKey}
+          onSelectionChange={setSelectedKey}
+          onChange={ChangeQueryStringHandler}
           classNames={{ base: "mb-1.5" }}
         >
           {(elevator: TermsListType) => (
@@ -165,6 +190,10 @@ const TermsSidebar = () => {
         <Select
           items={parkings}
           label=" وضعیت پارکینگ "
+          name="pa_parking"
+          selectedKeys={selectedKey}
+          onSelectionChange={setSelectedKey}
+          onChange={ChangeQueryStringHandler}
           classNames={{ base: "mb-1.5" }}
         >
           {(parking: TermsListType) => (
@@ -176,6 +205,10 @@ const TermsSidebar = () => {
         <Select
           items={others}
           label=" سایر ویژگی‌ها "
+          name="pa_other-features"
+          selectedKeys={selectedKey}
+          onSelectionChange={setSelectedKey}
+          onChange={ChangeQueryStringHandler}
           classNames={{ base: "mb-1.5" }}
         >
           {(other: TermsListType) => (

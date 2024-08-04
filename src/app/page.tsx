@@ -17,9 +17,9 @@ export const metadata: Metadata = {
 };
 
 const HomePage = async ({ searchParams }: { searchParams: Record<string , any> }) => {
-  let splitSearchParams = queryString.stringify(searchParams).split("=");
-  console.log(queryString.stringify(searchParams).split("="))
-  const estatesPromise = GetEstates(splitSearchParams[0], splitSearchParams[1]);
+  let splitSearchParams: string = queryString.stringify(searchParams).replace('%26' ,'&' ).replace('%3D' , '=');
+  console.log(splitSearchParams)
+  const estatesPromise = GetEstates(splitSearchParams);
   const termsPromise = GetAttributesTerms(51);
   const attributePromise = GetAttributes();
   const [estates, terms , attributes] = await Promise.all([
