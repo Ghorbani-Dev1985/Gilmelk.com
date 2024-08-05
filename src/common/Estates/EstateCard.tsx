@@ -1,4 +1,5 @@
 'use client';
+import ToLocalStringNumber from "@/utils/toLocalStringNumber";
 import { Chip } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,13 +10,24 @@ import { EstatesListType } from "src/types/estates";
 
 const EstateCard = ({ estate }: { estate: EstatesListType }) => {
   const { id, name , price ,  images , stock_quantity , categories} = estate;
+
   return (
   <div className="flex-center">
   <div className="w-full ml-1 mr-1 flex-center flex-col border-gray-700 text-center">
       <div className="w-full rounded-tr-[5rem] rounded-tl-md p-8 bg-gradient-to-br from-primary-100 to-primary-300 pb-28 relative">
           <Link href={`/estate/${id}`}><h1 className="text-xl mb-4">{name}</h1></Link>
           <p className="flex-center gap-x-1 text-white font-bold"><HiOutlineDocumentText className="size-5"/>{categories[1].name}</p>
-          <p className="flex-center gap-x-1 font-bold">{price}<HiOutlineCreditCard className="size-5"/></p>
+         <p className="flex-center gap-x-1.5 text-primary">
+            <HiOutlineCreditCard className="size-5" />
+            {ToLocalStringNumber(price)}
+            <Image
+              width={25}
+              height={25}
+              alt="ghorbani-dev.ir"
+              src="/images/toman/toman.svg"
+              className="size-4 lg:size-6"
+            />
+          </p>
       </div>
       <div className="text-center shadow-lg shadow-primary-100 min-h-[430px] rounded-bl-[5rem] rounded-br-md -mt-32 z-10 p-9 flex items-center flex-col">
         <div className="relative">

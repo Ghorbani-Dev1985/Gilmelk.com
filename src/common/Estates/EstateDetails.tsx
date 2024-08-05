@@ -7,7 +7,7 @@ import React, { useState } from "react";
 import { BiListUl, BiSolidCheckSquare } from "react-icons/bi";
 import { HiOutlineCreditCard } from "react-icons/hi";
 import { HiCalendarDays } from "react-icons/hi2";
-import { useGetEstateById } from "src/hooks/useEstates";
+import { useGetEstateById, useGetRelatedEstates } from "src/hooks/useEstates";
 import { EstatesListType } from "src/types/estates";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -16,17 +16,18 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs, Autoplay } from "swiper/modules";
 import "../../../public/styles/estateImagesSlider.css";
+import RelatedEstates from "./RelatedEstates";
 
 const EstateDetails = ({ id }: { id: number }) => {
   const { data: estate, isPending } = useGetEstateById(id);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   if (isPending) return <Spinner size="md" color="primary" />;
-  const { name, price, attributes, date_created, images, related_ids } =
-    estate[0];
-  console.log(estate);
+  const { name, price, attributes, date_created, images, related_ids } = estate[0];
+ 
   return (
-    <section className="w-full flex justify-between gap-5">
-      <div className="flex flex-1 flex-col gap-y-4 h-full p-5 border rounded-xl">
+    <>
+    <div className="w-full flex flex-col md:flex-row md:justify-between gap-5">
+      <div className="flex md:flex-1 flex-col gap-y-4 h-full p-5 border rounded-xl">
         <h1 className="font-black">{name}</h1>
         <div className="flex-between">
           <p className="flex-center gap-x-1.5 text-primary">
@@ -53,7 +54,7 @@ const EstateDetails = ({ id }: { id: number }) => {
         {attributes.map(({ id, name, options }: EstatesListType) => {
           return (
             <React.Fragment key={id}>
-              <div className="flex-between bg-primary-50/60 px-2.5 py-1.5 rounded-lg border border-primary-700 border-dashed">
+              <div className="flex-between bg-primary-50/60 hover:bg-primary-100 px-2.5 py-1.5 rounded-lg border border-primary-700 border-dashed transition-colors">
                 <p className="flex items-center gap-x-1">
                   <BiSolidCheckSquare className="size-5 text-amber-500" />
                   {name}
@@ -132,7 +133,10 @@ const EstateDetails = ({ id }: { id: number }) => {
           })}
         </Swiper>
       </div>
-    </section>
+    </div>
+    <Divider className="my-7"/>
+    <RelatedEstates related_ids={related_ids}/>
+    </>
   );
 };
 

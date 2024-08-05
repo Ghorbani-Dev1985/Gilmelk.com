@@ -13,3 +13,6 @@ export function GetEstates(queryString : string) {
     return Http.get(`/products?include=${id}`).then(({ data }) => data);
   }
 
+  export function GetRelatedEstates(ids : number[]) {
+    return Http.get(`/products?include=${ids}`).then(({ data }) => data);
+  }

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { GetEstateByCategory, GetEstates, GetOneEstateById } from "src/services/EstatesServices";
+import { GetEstateByCategory, GetEstates, GetOneEstateById, GetRelatedEstates } from "src/services/EstatesServices";
 export const useGetEstates = (queryString : string) =>
   useQuery({
     queryKey: ["getEstates"],
@@ -21,3 +21,10 @@ export const useGetEstateById = (id: number) =>
     retry: false,
     refetchOnWindowFocus: true,
   });
+  export const useGetRelatedEstates = (ids: number[]) =>
+    useQuery({
+      queryKey: ["getProductById", ids],
+      queryFn: () => GetRelatedEstates(ids),
+      retry: false,
+      refetchOnWindowFocus: true,
+    });

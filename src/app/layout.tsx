@@ -63,8 +63,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <main className="container flex flex-col items-center justify-center my-7">
               {children}
             </main>
-            <PreFooter />
-            <Footer />
+            {/* <PreFooter />
+            <Footer /> */}
           </NextUIProvider>
         </ReactQueryProvider>
       </body>
