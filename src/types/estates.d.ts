@@ -14,7 +14,6 @@ export interface EstatesListType {
     }[],
     images: {
         id: number,
-        date_created: string,
         src: string,
         alt: string
     }[],
@@ -22,7 +21,7 @@ export interface EstatesListType {
         id: number,
         name: string,
         slug: string,
-        options: [],
+        options: string[],
     }[],
     related_ids: [],
 }

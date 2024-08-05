@@ -18,7 +18,8 @@ import {
   useGetRoomTerms,
   useGetTotalAreaTerms,
   useGetYearTerms,
-} from "src/hooks/useAttributes";;
+} from "src/hooks/useAttributes";
+import {Selection} from "@react-types/shared";
 import { TermsListType } from "src/types/terms";
 
 const TermsSidebar = () => {
@@ -36,7 +37,7 @@ const TermsSidebar = () => {
   const { data: elevators } = useGetElevatorTerms();
   const { data: parkings } = useGetParkingTerms();
   const { data: others } = useGetOtherFeaturesTerms();
-  const [selectedKey , setSelectedKey] = useState(searchParams.get("attribute")?.split("=") || []);
+  const [selectedKey , setSelectedKey] = useState<Selection | string[]>(searchParams.get("attribute")?.split("=") || []);
   const CreateQueryString = useCallback((name: string , value: string) => {
     const params = new URLSearchParams(searchParams.toString())  
         params.set(name , value)

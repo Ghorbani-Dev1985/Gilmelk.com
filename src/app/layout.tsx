@@ -1,9 +1,9 @@
 import "../../public/styles/globals.css";
-import { ShabnamFont } from "@/utils/font";
+import { EstedadFont } from "@/utils/font";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
-import { NextUIProvider, Spinner } from "@nextui-org/react";
+import { NextUIProvider } from "@nextui-org/react";
 import { Toaster } from "react-hot-toast";
-import { ReactNode, Suspense } from "react";
+import { ReactNode } from "react";
 import { Metadata } from "next";
 import ReactQueryProvider from "./Providers";
 import Header from "src/common/Header/Header";
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 };
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="fa" dir="rtl" className={ShabnamFont.variable}>
+    <html lang="fa" dir="rtl" className={EstedadFont.variable}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link

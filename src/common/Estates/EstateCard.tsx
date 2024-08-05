@@ -13,7 +13,7 @@ const EstateCard = ({ estate }: { estate: EstatesListType }) => {
   <div className="flex-center">
   <div className="w-full ml-1 mr-1 flex-center flex-col border-gray-700 text-center">
       <div className="w-full rounded-tr-[5rem] rounded-tl-md p-8 bg-gradient-to-br from-primary-100 to-primary-300 pb-28 relative">
-          <h1 className="text-xl mb-4">{name}</h1>
+          <Link href={`/estate/${id}`}><h1 className="text-xl mb-4">{name}</h1></Link>
           <p className="flex-center gap-x-1 text-white font-bold"><HiOutlineDocumentText className="size-5"/>{categories[1].name}</p>
           <p className="flex-center gap-x-1 font-bold">{price}<HiOutlineCreditCard className="size-5"/></p>
       </div>
@@ -30,6 +30,7 @@ const EstateCard = ({ estate }: { estate: EstatesListType }) => {
           فروخته شد
         </Chip>
         }
+        <Link href={`/estate/${id}`}>
       <Image
            width={300}
            height={650}
@@ -38,7 +39,7 @@ const EstateCard = ({ estate }: { estate: EstatesListType }) => {
          blurDataURL={images[0].src}
           src={images[0].src}
           className="object-fill rounded-xl"
-        />
+        /></Link>
         </div>
       </div>
   </div>

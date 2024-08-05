@@ -6,7 +6,6 @@ import queryString from "query-string";
 import { EstatesListType } from "src/types/estates";
 import EstateCard from "src/common/Estates/EstateCard";
 import TermsSidebar from "src/components/Home/TermsSidebar";
-import { GetAttributes, GetAttributesTerms } from "src/services/AttributesService";
 
 export const dynamic = "force-dynamic";
 
@@ -18,14 +17,9 @@ export const metadata: Metadata = {
 
 const HomePage = async ({ searchParams }: { searchParams: Record<string , any> }) => {
   let splitSearchParams: string = queryString.stringify(searchParams).replace('%26' ,'&' ).replace('%3D' , '=');
-  console.log(splitSearchParams)
   const estatesPromise = GetEstates(splitSearchParams);
-  const termsPromise = GetAttributesTerms(51);
-  const attributePromise = GetAttributes();
-  const [estates, terms , attributes] = await Promise.all([
-    estatesPromise,
-    termsPromise,
-    attributePromise
+  const [estates] = await Promise.all([
+    estatesPromise
   ]);
 
   return (

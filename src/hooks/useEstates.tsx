@@ -1,19 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { GetEstateByCategory, GetEstates, GetEstatesTerms, GetOneEstateById } from "src/services/EstatesServices";
-export const useGetEstates = (attrSlug? : string , attrTerm?: number) =>
+import { GetEstateByCategory, GetEstates, GetOneEstateById } from "src/services/EstatesServices";
+export const useGetEstates = (queryString : string) =>
   useQuery({
     queryKey: ["getEstates"],
-    queryFn: () => GetEstates(attrSlug , attrTerm),
+    queryFn: () => GetEstates(queryString),
     retry: false,
     refetchOnWindowFocus: true,
   });
-  export const useGetEstatesTerms = (id: number) =>
-    useQuery({
-      queryKey: ["getEstatesTerms"],
-      queryFn: () => GetEstatesTerms(id),
-      retry: false,
-      refetchOnWindowFocus: true,
-    });
 export const useGetEstatesByCategory = (id: number) =>
   useQuery({
     queryKey: ["getProductsByCategory", id],
