@@ -25,3 +25,15 @@ export interface EstatesListType {
     }[],
     related_ids: [],
 }
+
+export interface EstatesAttributesType {
+    id: number,
+    name: string,
+    slug: string,
+    options: string[],
+}
+export interface EstatesImagesType {
+    id: number,
+    src: string,
+    alt: string
+}

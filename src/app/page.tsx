@@ -30,7 +30,7 @@ const HomePage = async ({ searchParams }: { searchParams: Record<string , any> }
         </div>
         <div className="col-span-4 md:col-span-3">
           sort
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-8">
+          <div className="grid grid-cols-1 gap-x-4 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
             {estates?.map((estate: EstatesListType) => {
               return (
                 <React.Fragment key={estate.id}>
