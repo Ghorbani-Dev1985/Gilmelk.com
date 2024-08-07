@@ -39,6 +39,7 @@ const config : Config = {
            success: 'rgb(0 , 192 , 115)',
            warning: 'rgb(255 , 153 , 0)',
            error: 'rgb(255,71 , 87)',
+           danger: '#f43f5e'
        },
        fontFamily: {
         estedad: ["var(--font-estedad-FD)"],

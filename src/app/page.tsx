@@ -1,12 +1,13 @@
 import { Metadata } from "next";
 import React, { Suspense } from "react";
-import { checkboxGroup, Spinner } from "@nextui-org/react";
+import {Spinner } from "@nextui-org/react";
 import { GetEstates } from "src/services/EstatesServices";
 import queryString from "query-string";
 import { EstatesListType } from "src/types/estates";
 import EstateCard from "src/common/Estates/EstateCard";
 import TermsSidebar from "src/components/Home/TermsSidebar";
 import PaginationList from "src/common/PaginationList";
+import EstatesSort from "src/components/Home/EstatesSort";
 
 export const dynamic = "force-dynamic";
 
@@ -31,7 +32,7 @@ const HomePage = async ({ searchParams }: { searchParams: Record<string , any> }
           <TermsSidebar />
         </div>
         <div className="col-span-4 md:col-span-3">
-          sort
+          <EstatesSort />
           <div className="grid grid-cols-1 gap-x-4 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 mb-5">
             {estates?.map((estate: EstatesListType) => {
               return (

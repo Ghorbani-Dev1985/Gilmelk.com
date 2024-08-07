@@ -66,6 +66,7 @@ const TermsSidebar = () => {
           onSelectionChange={setSelectedKey}
           classNames={{ base: "mb-1.5" }}
           onChange={ChangeQueryStringHandler}
+          size="sm"
         >
           {(neighborhood: TermsListType) => (
             <SelectItem key={neighborhood.id}>{neighborhood.name}</SelectItem>
@@ -81,6 +82,7 @@ const TermsSidebar = () => {
           onSelectionChange={setSelectedKey}
           onChange={ChangeQueryStringHandler}
           classNames={{ base: "mb-1.5" }}
+          size="sm"
         >
           {(document: TermsListType) => (
             <SelectItem key={document.id}>{document.name}</SelectItem>
@@ -91,7 +93,7 @@ const TermsSidebar = () => {
         <Select items={years} label="سال ساخت" name="pa_year-of-construction"
         selectedKeys={selectedKey}
         onSelectionChange={setSelectedKey}
-        onChange={ChangeQueryStringHandler} classNames={{ base: "mb-1.5" }}>
+        onChange={ChangeQueryStringHandler} classNames={{ base: "mb-1.5" }} size="sm">
           {(year: TermsListType) => (
             <SelectItem key={year.id}>{year.name}</SelectItem>
           )}
@@ -106,6 +108,7 @@ const TermsSidebar = () => {
           onSelectionChange={setSelectedKey}
         onChange={ChangeQueryStringHandler}
           classNames={{ base: "mb-1.5" }}
+          size="sm"
         >
           {(numFloor: TermsListType) => (
             <SelectItem key={numFloor.id}>{numFloor.name}</SelectItem>
@@ -121,6 +124,7 @@ const TermsSidebar = () => {
           onSelectionChange={setSelectedKey}
           onChange={ChangeQueryStringHandler}
           classNames={{ base: "mb-1.5" }}
+          size="sm"
         >
           {(numUnit: TermsListType) => (
             <SelectItem key={numUnit.id}>{numUnit.name}</SelectItem>
@@ -136,6 +140,7 @@ const TermsSidebar = () => {
           onSelectionChange={setSelectedKey}
           onChange={ChangeQueryStringHandler}
           classNames={{ base: "mb-1.5" }}
+          size="sm"
         >
           {(floor: TermsListType) => (
             <SelectItem key={floor.id}>{floor.name}</SelectItem>
@@ -151,6 +156,7 @@ const TermsSidebar = () => {
           onSelectionChange={setSelectedKey}
           onChange={ChangeQueryStringHandler}
           classNames={{ base: "mb-1.5" }}
+          size="sm"
         >
           {(totalArea: TermsListType) => (
             <SelectItem key={totalArea.id}>{totalArea.name}</SelectItem>
@@ -166,6 +172,7 @@ const TermsSidebar = () => {
           onSelectionChange={setSelectedKey}
           onChange={ChangeQueryStringHandler}
           classNames={{ base: "mb-1.5" }}
+          size="sm"
         >
           {(room: TermsListType) => (
             <SelectItem key={room.id}>{room.name}</SelectItem>
@@ -181,6 +188,7 @@ const TermsSidebar = () => {
           onSelectionChange={setSelectedKey}
           onChange={ChangeQueryStringHandler}
           classNames={{ base: "mb-1.5" }}
+          size="sm"
         >
           {(elevator: TermsListType) => (
             <SelectItem key={elevator.id}>{elevator.name}</SelectItem>
@@ -196,6 +204,7 @@ const TermsSidebar = () => {
           onSelectionChange={setSelectedKey}
           onChange={ChangeQueryStringHandler}
           classNames={{ base: "mb-1.5" }}
+          size="sm"
         >
           {(parking: TermsListType) => (
             <SelectItem key={parking.id}>{parking.name}</SelectItem>
@@ -211,6 +220,7 @@ const TermsSidebar = () => {
           onSelectionChange={setSelectedKey}
           onChange={ChangeQueryStringHandler}
           classNames={{ base: "mb-1.5" }}
+          size="sm"
         >
           {(other: TermsListType) => (
             <SelectItem key={other.id}>{other.name}</SelectItem>

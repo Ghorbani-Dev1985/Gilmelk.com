@@ -49,7 +49,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <ReactQueryProvider>
           <NextUIProvider>
           <NextTopLoader
-              color="#c58c3d"
+              color="#2ED573"
               initialPosition={0.08}
               crawlSpeed={200}
               height={4}
