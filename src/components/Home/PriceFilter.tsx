@@ -10,7 +10,7 @@ const PriceFilter = () => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [sliderValue, setSliderValue] = useState<SliderValue>(8000000000);
+  const [sliderValue, setSliderValue] = useState<SliderValue>(1000000000);
   const CreateQueryString = useCallback(
     (name: string, value: string) => {
       const params = new URLSearchParams(searchParams.toString());
@@ -24,7 +24,6 @@ const PriceFilter = () => {
       pathname + "?" + CreateQueryString("max_price", sliderValue.toString())
     );
   };
-  console.log(sliderValue);
   return (
     <Slider
       label="فیلتر قیمت"

@@ -6,8 +6,7 @@ import { Toaster } from "react-hot-toast";
 import { ReactNode } from "react";
 import { Metadata } from "next";
 import ReactQueryProvider from "./Providers";
-import Header from "src/common/Header/Header";
-import PreFooter from "src/common/Footer/PreFooter";
+import Header from "src/common/Header";
 import Footer from "src/common/Footer/Footer";
 import NextTopLoader from "nextjs-toploader";
 
@@ -59,12 +58,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               speed={200}
             />
             <Toaster />
-            {/* <Header /> */}
+            <Header />
             <main className="container flex flex-col items-center justify-center my-7">
               {children}
             </main>
-            {/* <PreFooter />
-            <Footer /> */}
+            <Footer /> 
           </NextUIProvider>
         </ReactQueryProvider>
       </body>
