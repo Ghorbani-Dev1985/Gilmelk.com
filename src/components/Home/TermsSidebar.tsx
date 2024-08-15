@@ -118,11 +118,14 @@ const TermsSidebar = () => {
   ) => {
     const name = e.target.name;
     const termId = e.target.value;
-    router.push(
-      pathname +
-        "?" +
-        CreateQueryString("attribute", `${name}&attribute_term=${termId}`)
-    );
+    if(searchParams.size !== 0) {
+      router.push(pathname);
+    }
+      router.push(
+        pathname +
+          "?" +
+          CreateQueryString("attribute", `${name}&attribute_term=${termId}`)
+      );
   };
   if (isPending) return <Spinner size="md" color="primary" />;
   return (
