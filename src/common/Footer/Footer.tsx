@@ -1,5 +1,4 @@
 import Image from "next/image";
-import AddressItems from "./AddressItems";
 import ScrollToTopButton from "./ScrollToTopButton";
 import { Divider } from "@nextui-org/react";
 import Link from "next/link";

@@ -1,11 +1,29 @@
 "use client";
-import React from "react";
+import React, { useCallback } from "react";
 import { Input, Navbar, NavbarBrand, NavbarContent } from "@nextui-org/react";
 import Link from "next/link";
 import Image from "next/image";
 import { BiSearchAlt } from "react-icons/bi";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const Header = () => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const CreateQueryString = useCallback(
+    (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams);
+      params.set(name, value);
+      return params.toString();
+    },
+    [searchParams]
+  );
+  const SearchHandler = (e : React.ChangeEvent<HTMLInputElement>) => {
+    const SearchValue = e.target.value;
+      if(SearchValue.length >=2){
+        router.push(pathname + "?" + CreateQueryString("search", SearchValue));
+      }
+  }
   return (
     <section className="container">
       <Navbar
@@ -36,6 +54,7 @@ const Header = () => {
               inputWrapper:
                 "h-full font-normal text-default-500 md:bg-white/60",
             }}
+            onChange={SearchHandler}
             placeholder="جستجوی ملک ..."
             size="lg"
             endContent={<BiSearchAlt className="size-8" />}
