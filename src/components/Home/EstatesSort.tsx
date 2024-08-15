@@ -4,6 +4,7 @@ import { Button, Divider, Select, SelectItem } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
+import toast from "react-hot-toast";
 import { HiOutlineTrash } from "react-icons/hi";
 import SortOptions from "src/constants/SortOprions";
 
@@ -30,6 +31,7 @@ const EstatesSort = () => {
   };
   const RemoveFilterSortHandler = () => {
     router.push(pathname);
+    toast.success("فیلتر و مرتب سازی با موفقیت حذف گردید")
   };
   return (
     <section className="flex flex-col mb-14">

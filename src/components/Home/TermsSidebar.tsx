@@ -21,6 +21,7 @@ import {
 } from "src/hooks/useAttributes";
 import {Selection} from "@react-types/shared";
 import { TermsListType } from "src/types/terms";
+import PriceFilter from "./PriceFilter";
 
 const TermsSidebar = () => {
   const router = useRouter()
@@ -227,6 +228,7 @@ const TermsSidebar = () => {
           )}
         </Select>
       )}
+      <PriceFilter />
     </aside>
   );
 };
