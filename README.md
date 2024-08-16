@@ -1,14 +1,15 @@
 <p align="center">
   <a href="#">
-    <img  src="./public/images/logo/logo.webp" width="100" alt="ghorbani-dev.ir"/>
-    <h2 align="center"> Cafe Restaurant Mim | کافه رستوران میم</h2>
+    <img  src="./public/images/logo/logo.png" width="100" alt="ghorbani-dev.ir"/>
+    <h2 align="center"> Gil Melk | گیل ملک</h2>
   </a>
 </p>
 
 # Screen Shot
-
-<img  src="./public/images/screenShot/screenShot.png" width="100%" alt="ghorbani-dev.ir"/>
-
+<div align="center">
+<img  src="./public/images/screenShot/screenShot1.png" width="49%" alt="ghorbani-dev.ir"/>
+<img  src="./public/images/screenShot/screenShot2.png" width="49%" alt="ghorbani-dev.ir"/>
+</div>
 
 
 ---
@@ -18,22 +19,20 @@ Develop with NextJS, TypeScript , Tailwindcss
 # APP Features
 
 <ul>
-<li>Get & Show menu from Api</li>
-<li>Get & Show slider images from Api</li>
-<li>Get & Show categories from Api</li>
-<li>Get & Show about us from Api</li>
-<li>Get & Show image gallery from Api</li>
-<li>Get & Show posts from Api</li>
-<li>Get & Show single post from Api</li>
-<li>Develop contact us form & post data to back end</li>
-<li>Develop reservation form & post data to back end</li>
+<li>Show all estates</li>
+<li>Filters estates</li>
+<li>Sort estates</li>
+<li>Search estates</li>
+<li>Remove filters & sort</li>
+<li>Show details of estates</li>
+<li>Show related estate in details page</li>
 </ul>
 
 ---
 
 # APP Link
 
-[caferestaurantmim.vercel.app](https://caferestaurantmim.vercel.app/)
+[gilmelk-com.vercel.app](https://gilmelk-com.vercel.app/)
 
 
 ---

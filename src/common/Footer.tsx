@@ -5,7 +5,7 @@ import ScrollToTopButton from "./ScrollToTopButton";
 
 const Footer = () => {
   return (
-    <footer className="container">
+    <footer className="container relative">
       <div className="flex flex-col items-center gap-y-10 bg-primary-200 text-white my-5 rounded-lg p-4">
         <Image
           width={250}
