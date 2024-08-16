@@ -11,12 +11,6 @@ import EstatesSort from "src/components/Home/EstatesSort";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
-  title: "کافه و رستوران میم | Cafe Restaurant mim",
-  description:
-    "کافه و رستوران میم با محیطی زیبا در خیابان لاکانی رشت آماده پذیرایی شما عزیزان می باشد ، امیدواریم لحظات خوبی را کنار هم داشته باشیم",
-};
-
 const HomePage = async ({ searchParams }: { searchParams: Record<string , any> }) => {
   let splitSearchParams: string = queryString.stringify(searchParams).replace('%26' ,'&' ).replace('%3D' , '=');
   const estatesPromise = GetEstates(splitSearchParams);

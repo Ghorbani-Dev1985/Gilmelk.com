@@ -7,13 +7,12 @@ import { ReactNode } from "react";
 import { Metadata } from "next";
 import ReactQueryProvider from "./Providers";
 import Header from "src/common/Header";
-import Footer from "src/common/Footer/Footer";
+import Footer from "src/common/Footer";
 import NextTopLoader from "nextjs-toploader";
 
 export const metadata: Metadata = {
-  title: "کافه و رستوران میم | Cafe Restaurant mim",
-  description:
-    "کافه و رستوران میم با محیطی زیبا در خیابان لاکانی رشت آماده پذیرایی شما عزیزان می باشد ، امیدواریم لحظات خوبی را کنار هم داشته باشیم",
+  title: "گیل ملک | Gil Melk",
+  description: " انواع ملک با شرایط مختلف در استان گیلان",
 };
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -22,20 +21,20 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link
           rel="icon"
-          href="/images/icon/icon-32x32.webp"
-          type="image/webp"
+          href="/images/logo/logo.png"
+          type="image/png"
           sizes="32x32"
         />
         <link
           rel="icon"
-          href="/images/icon/icon-192x192.webp"
-          type="image/webp"
+          href="/images/logo/logo.png"
+          type="image/png"
           sizes="192x192"
         />
         <link
           rel="apple-touch-icon"
-          href="/images/icon/icon-180x180.webp"
-          type="image/webp"
+          href="/images/logo/logo.png"
+          type="image/png"
         />
         <GoogleTagManager
           gtmId={`GTM-${process.env.NEXT_PUBLIC_GOOGLETAGMANAGER_ID}`}
@@ -47,7 +46,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <ReactQueryProvider>
           <NextUIProvider>
-          <NextTopLoader
+            <NextTopLoader
               color="#2ED573"
               initialPosition={0.08}
               crawlSpeed={200}
@@ -62,7 +61,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <main className="container flex flex-col items-center justify-center my-7">
               {children}
             </main>
-            <Footer /> 
+            <Footer />
           </NextUIProvider>
         </ReactQueryProvider>
       </body>
