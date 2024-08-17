@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { Input, Navbar, NavbarBrand, NavbarContent } from "@nextui-org/react";
 import Link from "next/link";
 import Image from "next/image";
@@ -10,6 +10,7 @@ const Header = () => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const [searchInput , setSearchInput] = useState("")
   const CreateQueryString = useCallback(
     (name: string, value: string) => {
       const params = new URLSearchParams(searchParams);
@@ -19,11 +20,15 @@ const Header = () => {
     [searchParams]
   );
   const SearchHandler = (e : React.ChangeEvent<HTMLInputElement>) => {
-    const SearchValue = e.target.value;
-      if(SearchValue.length >=2){
-        router.push(pathname + "?" + CreateQueryString("search", SearchValue));
-      }
+     const SearchValue = e.target.value;
+    console.log(pathname)
+    if(pathname !== "/" && SearchValue.length >=2){
+      router.push("/" + "?" + CreateQueryString("search", SearchValue));
+    }else if(pathname === "/" && SearchValue.length >= 2){
+      router.push(pathname + "?" + CreateQueryString("search", SearchValue));
+    }
   }
+  console.log(searchInput)
   return (
     <section className="container">
       <Navbar
