@@ -1,17 +1,18 @@
 "use client";
 import ToLocalDateStringShort from "@/utils/toLocalDateStringShort";
 import ToLocalStringNumber from "@/utils/toLocalStringNumber";
-import { Divider, Spinner } from "@nextui-org/react";
+import { Chip, Divider, Spinner } from "@nextui-org/react";
 import Image from "next/image";
 import React, { useState } from "react";
-import { BiListUl, BiSolidCheckSquare } from "react-icons/bi";
+import {
+  BiListUl,
+  BiSolidCheckCircle,
+  BiSolidCheckSquare,
+} from "react-icons/bi";
 import { HiOutlineCreditCard } from "react-icons/hi";
 import { HiCalendarDays } from "react-icons/hi2";
 import { useGetEstateById } from "src/hooks/useEstates";
-import {
-  EstatesAttributesType,
-  EstatesImagesType,
-} from "src/types/estates";
+import { EstatesAttributesType, EstatesImagesType } from "src/types/estates";
 import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -25,8 +26,15 @@ const EstateDetails = ({ id }: { id: number }) => {
   const { data: estate, isPending } = useGetEstateById(id);
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass>();
   if (isPending) return <Spinner size="md" color="primary" />;
-  const { name, price, attributes, date_created, images, related_ids } =
-    estate[0];
+  const {
+    name,
+    price,
+    attributes,
+    date_created,
+    stock_status,
+    images,
+    related_ids,
+  } = estate[0];
   return (
     <>
       <div className="w-full flex flex-col md:flex-row md:justify-between gap-5">
@@ -34,15 +42,21 @@ const EstateDetails = ({ id }: { id: number }) => {
           <h1 className="font-black">{name}</h1>
           <div className="flex-between">
             <p className="flex-center gap-x-1.5 text-primary">
-              <HiOutlineCreditCard className="size-5" />
-              {ToLocalStringNumber(price)}
-              <Image
-                width={25}
-                height={25}
-                alt="ghorbani-dev.ir"
-                src="/images/toman/toman.svg"
-                className="size-4 lg:size-6"
-              />
+              {price ? (
+                <>
+                  <HiOutlineCreditCard className="size-5" />
+                  {ToLocalStringNumber(price)}
+                  <Image
+                    width={25}
+                    height={25}
+                    alt="ghorbani-dev.ir"
+                    src="/images/toman/toman.svg"
+                    className="size-4 lg:size-6"
+                  />
+                </>
+              ) : (
+                <span>این ملک فروخته شد</span>
+              )}
             </p>
             <p className="flex-center gap-x-1.5 font-normal">
               <HiCalendarDays className="size-5" />
@@ -76,7 +90,7 @@ const EstateDetails = ({ id }: { id: number }) => {
             );
           })}
         </div>
-        <div className="flex flex-1 flex-col max-w-xl">
+        <div className="flex flex-1 flex-col max-w-xl relative">
           <Swiper
             loop={true}
             spaceBetween={10}
@@ -93,6 +107,16 @@ const EstateDetails = ({ id }: { id: number }) => {
               return (
                 <React.Fragment key={id}>
                   <SwiperSlide>
+                    {stock_status === "outofstock" && (
+                      <Chip
+                        startContent={<BiSolidCheckCircle className="size-4" />}
+                        variant="solid"
+                        color="success"
+                        className="absolute right-2 top-4 z-20 text-white font-extrabold"
+                      >
+                        فروخته شد
+                      </Chip>
+                    )}
                     <Image
                       width={570}
                       height={770}
@@ -100,7 +124,7 @@ const EstateDetails = ({ id }: { id: number }) => {
                       placeholder="blur"
                       blurDataURL={src}
                       src={src}
-                      className="rounded-xl"
+                      className={`${!price && "grayscale"} rounded-xl`}
                     />
                   </SwiperSlide>
                 </React.Fragment>
@@ -128,7 +152,7 @@ const EstateDetails = ({ id }: { id: number }) => {
                       placeholder="blur"
                       blurDataURL={src}
                       src={src}
-                      className="rounded-xl"
+                      className={`${!price && "grayscale"} rounded-xl`}
                     />
                   </SwiperSlide>
                 </React.Fragment>

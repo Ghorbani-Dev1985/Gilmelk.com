@@ -24,6 +24,7 @@ export interface EstatesListType {
         options: string[],
     }[],
     related_ids: [],
+    stock_status: string
 }
 
 export interface EstatesAttributesType {

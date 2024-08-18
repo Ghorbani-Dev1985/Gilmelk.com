@@ -18,7 +18,7 @@ const HomePage = async ({ searchParams }: { searchParams: Record<string , any> }
     (await estatesPromise).data,
     (await estatesPromise).headers
   ]);
-  if(estates.length === 0) return <Alert alertText="هیچ ملکی یافت نگردید."/>;
+  if(estates?.length === 0) return <Alert alertText="هیچ ملکی یافت نگردید."/>;
   return (
     <Suspense fallback={<Spinner size="md" color="primary" />}>
       <section className="container grid items-start grid-rows-1 grid-cols-4 gap-3.5 sm:gap-5 mt-9 sm:mt-25 my-16">
