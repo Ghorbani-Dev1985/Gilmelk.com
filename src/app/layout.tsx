@@ -57,13 +57,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               speed={200}
             />
             <Toaster />
-            <Suspense fallback={<Spinner size="md" color="primary" />}>
             <Header />
+            <Suspense fallback={<Spinner size="sm" color="primary" className="w-full flex-center h-screen"/>}>
             <main className="container flex flex-col items-center justify-center my-7">
               {children}
             </main>
-            <Footer />
             </Suspense>
+            <Footer />
           </NextUIProvider>
         </ReactQueryProvider>
       </body>
