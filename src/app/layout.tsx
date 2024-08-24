@@ -60,7 +60,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
             <Toaster />
             <Suspense fallback={<Loading className="w-full flex-center h-screen"/>}>
             <Header />
-            <main className="container flex flex-col items-center justify-center my-7">
+            <main className="container flex flex-col min-h-screen items-center justify-center my-7">
               {children}
             </main>
             </Suspense>

@@ -37,10 +37,10 @@ const EstateDetails = ({ id }: { id: number }) => {
   } = estate[0];
   return (
     <>
-      <div className="w-full flex flex-col md:flex-row md:justify-between gap-5">
+      <div className="w-full flex flex-col md:flex-row md:justify-between gap-5 mt-16">
         <div className="flex md:flex-1 flex-col gap-y-4 h-full p-5 border rounded-xl">
           <h1 className="font-black">{name}</h1>
-          <div className="flex-between">
+          <div className="flex-between flex-col md:flex-row">
             <p className="flex-center gap-x-1.5 text-primary">
               {price ? (
                 <>
@@ -71,7 +71,7 @@ const EstateDetails = ({ id }: { id: number }) => {
           {attributes.map(({ id, name, options }: EstatesAttributesType) => {
             return (
               <React.Fragment key={id}>
-                <div className="flex-between bg-primary-50/60 hover:bg-primary-100 px-2.5 py-1.5 rounded-lg border border-primary-700 border-dashed transition-colors">
+                <div className="flex-between bg-primary-50/60 text-sm md:text-base hover:bg-primary-100 px-2.5 py-1.5 rounded-lg border border-primary-700 border-dashed transition-colors">
                   <p className="flex items-center gap-x-1">
                     <BiSolidCheckSquare className="size-5 text-amber-500" />
                     {name}
@@ -90,7 +90,7 @@ const EstateDetails = ({ id }: { id: number }) => {
             );
           })}
         </div>
-        <div className="flex flex-1 flex-col max-w-xl relative">
+        <div className="flex flex-1 flex-col md:max-w-sm lg:max-w-xl relative">
           <Swiper
             loop={true}
             spaceBetween={10}
@@ -101,7 +101,7 @@ const EstateDetails = ({ id }: { id: number }) => {
             }}
             thumbs={{ swiper: thumbsSwiper }}
             modules={[FreeMode, Navigation, Thumbs, Autoplay]}
-            className="mySwiper2"
+            className="mySwiper2 md:!h-[80%]"
           >
             {images.map(({ id, src, alt }: EstatesImagesType) => {
               return (
