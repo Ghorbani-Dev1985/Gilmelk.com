@@ -1,7 +1,7 @@
 import "../../public/styles/globals.css";
 import { EstedadFont } from "@/utils/font";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
-import { NextUIProvider, Spinner } from "@nextui-org/react";
+import { NextUIProvider } from "@nextui-org/react";
 import { Toaster } from "react-hot-toast";
 import { ReactNode, Suspense } from "react";
 import { Metadata } from "next";
@@ -9,12 +9,13 @@ import ReactQueryProvider from "./Providers";
 import Header from "src/common/Header";
 import Footer from "src/common/Footer";
 import NextTopLoader from "nextjs-toploader";
+import Loading from "./loading";
 
 export const metadata: Metadata = {
   title: "گیل ملک | Gil Melk",
   description: " انواع ملک با شرایط مختلف در استان گیلان",
 };
-export default function RootLayout({ children }: { children: ReactNode }) {
+const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <html lang="fa" dir="rtl" className={EstedadFont.variable}>
       <head>
@@ -57,8 +58,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               speed={200}
             />
             <Toaster />
+            <Suspense fallback={<Loading className="w-full flex-center h-screen"/>}>
             <Header />
-            <Suspense fallback={<Spinner size="sm" color="primary" className="w-full flex-center h-screen"/>}>
             <main className="container flex flex-col items-center justify-center my-7">
               {children}
             </main>
@@ -70,3 +71,5 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     </html>
   );
 }
+
+export default RootLayout;
