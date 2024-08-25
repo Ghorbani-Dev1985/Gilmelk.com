@@ -10,6 +10,7 @@ import { EstatesListType } from "src/types/estates";
 
 const EstateCard = ({ estate }: { estate: EstatesListType }) => {
   const { id, name, price, images, stock_status, categories } = estate;
+  console.log(estate)
   return (
     <>
       <div className="relative flex flex-col rounded-xl bg-white border border-slate-100 bg-clip-border shadow-md shadow-primary-200">
@@ -49,7 +50,7 @@ const EstateCard = ({ estate }: { estate: EstatesListType }) => {
           </Link>
           <p className="flex-center gap-x-1 text-sky-500 font-bold mb-4">
             <HiOutlineDocumentText className="size-5" />
-            {categories[1].name}
+            {categories.length > 1 ? categories[1]?.name : categories[0]?.name}
           </p>
           <p
             className={`${
