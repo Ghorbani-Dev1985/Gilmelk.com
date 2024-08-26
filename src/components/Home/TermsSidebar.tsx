@@ -23,7 +23,7 @@ const TermsSidebar = () => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const { data: documents, isPending } = useGetDocumentTerms();
+  const { data: documents } = useGetDocumentTerms();
   const { data: neighborhoods } = useGetNeighborhoodTerms();
   const { data: years } = useGetYearTerms();
   const { data: numFloors } = useGetNumFloorTerms();
@@ -33,7 +33,7 @@ const TermsSidebar = () => {
   const { data: rooms } = useGetRoomTerms();
   const { data: elevators } = useGetElevatorTerms();
   const { data: parkings } = useGetParkingTerms();
-  const { data: others } = useGetOtherFeaturesTerms();
+  const { data: others, isPending } = useGetOtherFeaturesTerms();
   const TermsItems = [
     {
       id: 1,
@@ -118,12 +118,11 @@ const TermsSidebar = () => {
   ) => {
     const name = e.target.name;
     const termId = e.target.value;
-      router.push(
-        pathname +
-          "?" +
-          CreateQueryString("attribute", `${name}&attribute_term=${termId}`)
-      );
-    
+    router.push(
+      pathname +
+        "?" +
+        CreateQueryString("attribute", `${name}&attribute_term=${termId}`)
+    );
   };
   if (isPending) return <Spinner size="md" color="primary" />;
   return (

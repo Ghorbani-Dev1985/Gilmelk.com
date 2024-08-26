@@ -58,12 +58,10 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
               speed={200}
             />
             <Toaster />
-            <Suspense fallback={<Loading className="w-full flex-center h-screen"/>}>
             <Header />
-            <main className="container flex flex-col min-h-screen items-center justify-center my-7">
+            <main className="container flex flex-col min-h-screen my-7">
               {children}
             </main>
-            </Suspense>
             <Footer />
           </NextUIProvider>
         </ReactQueryProvider>

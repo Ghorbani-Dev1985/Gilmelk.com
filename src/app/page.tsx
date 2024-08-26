@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { GetEstates } from "src/services/EstatesServices";
 import queryString from "query-string";
 import { EstatesListType } from "src/types/estates";
@@ -7,6 +7,7 @@ import TermsSidebar from "src/components/Home/TermsSidebar";
 import PaginationList from "src/common/PaginationList";
 import EstatesSort from "src/components/Home/EstatesSort";
 import Alert from "src/common/Alert";
+import { Spinner } from "@nextui-org/react";
 export const dynamic = "force-dynamic";
 
 const HomePage = async ({

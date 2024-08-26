@@ -12,20 +12,8 @@ const EstateCard = ({ estate }: { estate: EstatesListType }) => {
   const { id, name, price, images, stock_status, categories } = estate;
   return (
     <>
-    {/* <div className="block relative aspect-video">
-    <Image
-             fill
-              alt={images[0].alt}
-              placeholder="blur"
-              blurDataURL={images[0].src}
-              src={images[0].src}
-              className={`${
-                !price && "grayscale"
-              } object-cover object-center max-w-full h-full rounded-xl`}
-            />
-    </div> */}
       <div className="flex flex-col rounded-xl bg-white border border-slate-100 bg-clip-border shadow-md shadow-primary-200">
-        <div className="relative mx-4 -mt-7 h-56 overflow-hidden rounded-xl bg-primary-100 bg-clip-border text-white shadow-lg shadow-primary-100">
+        <div className="relative mx-4 -mt-7 overflow-hidden rounded-xl bg-primary-100 bg-clip-border text-white shadow-lg shadow-primary-100">
           {stock_status === "outofstock" && (
             <Chip
               startContent={<BiSolidCheckCircle className="size-4" />}

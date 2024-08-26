@@ -2,7 +2,12 @@
 import { Spinner } from "@nextui-org/react";
 
 const Loading = ({className} : {className?: string}) => {
-    return <Spinner size="md" color="primary" className={className}/>
+    return (
+      <div className="flex flex-col items-center gap-y-5">
+        <p>در حال دریافت اطلاعات ‌ملک‌‌ها</p>
+        <Spinner size="md" color="primary" />
+      </div>
+    )
   }
 
 export default Loading;
