@@ -90,7 +90,7 @@ const EstateDetails = ({ id }: { id: number }) => {
             );
           })}
         </div>
-        <div className="flex flex-1 flex-col md:max-w-sm lg:max-w-xl relative">
+        <div className="flex flex-1 flex-col w-full md:max-w-sm lg:max-w-xl">
           <Swiper
             loop={true}
             spaceBetween={10}
@@ -101,8 +101,9 @@ const EstateDetails = ({ id }: { id: number }) => {
             }}
             thumbs={{ swiper: thumbsSwiper }}
             modules={[FreeMode, Navigation, Thumbs, Autoplay]}
-            className="mySwiper2 md:!h-[80%]"
+            className="mySwiper2 md:!h-full"
           >
+            <div className="block relative">
             {images.map(({ id, src, alt }: EstatesImagesType) => {
               return (
                 <React.Fragment key={id}>
@@ -118,18 +119,18 @@ const EstateDetails = ({ id }: { id: number }) => {
                       </Chip>
                     )}
                     <Image
-                      width={570}
-                      height={770}
+                      fill
                       alt={alt}
                       placeholder="blur"
                       blurDataURL={src}
                       src={src}
-                      className={`${!price && "grayscale"} rounded-xl`}
+                      className={`${!price && "grayscale"} object-cover object-center rounded-xl`}
                     />
                   </SwiperSlide>
                 </React.Fragment>
               );
             })}
+            </div>
           </Swiper>
           <Swiper
             onSwiper={setThumbsSwiper}
@@ -139,25 +140,26 @@ const EstateDetails = ({ id }: { id: number }) => {
             freeMode={true}
             watchSlidesProgress={true}
             modules={[FreeMode, Navigation, Thumbs]}
-            className="mySwiper"
+            className="mySwiper min-h-28"
           >
+            <div className="block relative aspect-square">
             {images.map(({ id, src, alt }: EstatesImagesType) => {
               return (
                 <React.Fragment key={id}>
                   <SwiperSlide>
                     <Image
-                      width={100}
-                      height={100}
+                     fill
                       alt={alt}
                       placeholder="blur"
                       blurDataURL={src}
                       src={src}
-                      className={`${!price && "grayscale"} rounded-xl`}
-                    />
+                      className={`${!price && "grayscale"} object-cover object-center min-h-24 rounded-xl`}
+                      />
                   </SwiperSlide>
                 </React.Fragment>
               );
             })}
+            </div>
           </Swiper>
         </div>
       </div>
